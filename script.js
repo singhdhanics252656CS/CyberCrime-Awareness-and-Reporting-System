@@ -9,6 +9,7 @@ function go(id,push=true){if(id==='login'){try{history.replaceState(null,'','#ho
  [...tabs.children].forEach(b=>b.setAttribute('aria-selected',b.id==='t-'+id));
  if(push&&id!=='admin'){try{history.replaceState(null,'','#'+id)}catch(e){}}window.scrollTo(0,0);
  const tb=$('t-'+id);if(tb)tb.scrollIntoView({block:'nearest',inline:'center'})}
+{const b=document.createElement('button');b.className='tabbtn';b.role='tab';b.id='t-admin';b.textContent='Admin';b.onclick=()=>openLogin();tabs.appendChild(b)}
 document.querySelectorAll('[data-go]').forEach(e=>e.onclick=()=>go(e.dataset.go));
 addEventListener('hashchange',()=>go(location.hash.slice(1),false));
 
