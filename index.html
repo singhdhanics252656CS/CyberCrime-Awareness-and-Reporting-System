@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CyberSafe India | Cybercrime Awareness and Reporting System</title>
+<meta name="description" content="Field project: cybercrime awareness and reporting in India. Data, scam types, a quiz, and a step-by-step reporting guide.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">🛡️ CyberSafe India</div><div class="sos">Lost money to a scam? Call <b>1930</b> now</div></div></div>
+<div class="tabnav"><div class="wrap" role="tablist" id="tabs"></div></div>
+
+<main>
+<section class="pane" id="home" data-title="Home" style="padding:0">
+ <div class="hero"><div class="wrap grid">
+  <div>
+   <h1>Most cybercrime starts with a message that <mark>looks normal.</mark></h1>
+   <p class="lede">A field project on cybercrime awareness and reporting. See the data, learn the tricks, test yourself, and know exactly where to report.</p>
+   <div class="big"><div><b id="c1">0</b>cases registered in 2025</div><div><b id="c2">0×</b>growth since 2015</div><div><b>1930</b>cyber fraud helpline</div></div>
+   <button class="cta" data-go="quiz">Test yourself in 2 minutes</button>
+  </div>
+  <div class="phone">
+   <small>Try it: tap the three suspicious parts of this SMS.</small>
+   <div class="sms">BANKX ALERT: Your account <button class="flag" data-i="0">will be blocked today</button>. Update your KYC at <button class="flag" data-i="1">http://bankx-kyc-update.in/login</button> and <button class="flag" data-i="2">share the OTP you receive</button> with our officer.</div>
+   <div class="why" id="why" aria-live="polite">Tap an underlined phrase to see why it is a red flag.</div>
+   <div class="score" id="score">0 of 3 found</div>
+  </div>
+ </div></div>
+ <div class="band" aria-hidden="true"><div id="band"></div></div>
+ <div class="wrap" style="padding-top:44px;padding-bottom:80px">
+  <h2>Where do you want to start?</h2>
+  <div class="cards">
+   <button class="card" data-go="data"><h3>See the numbers</h3><p>Eleven years of registered cases, arrests and pending investigations.</p></button>
+   <button class="card" data-go="scams"><h3>Learn the tricks</h3><p>Nine common scams, how they look, and what to do.</p></button>
+   <button class="card" data-go="report"><h3>Report a crime</h3><p>Pick what happened and get the steps in order.</p></button>
+   <button class="card" data-go="share"><h3>Share your story</h3><p>Tell us what you faced. Your answer is saved for our project.</p></button>
+   <button class="card" data-go="password"><h3>Check a password</h3><p>See how strong it is. Nothing leaves your device.</p></button>
+  </div>
+ </div>
+</section>
+
+<section class="pane" id="data" data-title="The numbers" hidden><div class="wrap">
+ <h2>What the case data shows</h2>
+ <p class="lede">Pick a measure, then tap a bar to see how that year’s cases were handled.</p>
+ <div class="chips" id="metrics" role="group" aria-label="Measure"></div>
+ <div class="box">
+  <div class="readout" id="readout" aria-live="polite"></div>
+  <div class="scroll"><svg class="chart" id="chart" viewBox="0 0 720 300" role="group" aria-label="Bar chart by year"></svg></div>
+ </div>
+ <div class="box" style="margin-top:16px"><div class="readout" id="yr"></div><div class="split3" id="split"></div><p class="note" id="splitnote" style="margin:6px"></p></div>
+ <div class="facts">
+  <div class="fact"><b>10.7×</b>Registered cases in 2025 compared with 2015 (11,592 to 124,500).</div>
+  <div class="fact"><b>1 in 3</b>Cases reach a chargesheet. The share stays between 31% and 36% every year.</div>
+  <div class="fact"><b>53,300</b>Cases still pending investigation in 2025, up from 3,772 in 2015.</div>
+ </div>
+ <p class="note">Women made up about 2.4% of people arrested in 2015 and about 3.2% in 2025. The 2026 bar covers January to June only. Figures come from the project dataset (Cybercrime_Data_India_2015_2026).</p>
+</div></section>
+
+<section class="pane" id="scams" data-title="Scam types" hidden><div class="wrap">
+ <h2>Nine tricks to recognise</h2>
+ <p class="lede">Open any card to see how the scam looks and what to do about it.</p>
+ <div id="sc" style="display:grid;gap:12px;margin-top:26px"></div>
+</div></section>
+
+<section class="pane" id="targets" data-title="Who is targeted" hidden><div class="wrap">
+ <h2>Who is targeted, and how</h2>
+ <p class="lede">Different people face different tricks. Choose a group to see the common crimes, how often cases get reported, and what helps.</p>
+ <div class="split"><div id="profs" role="group" aria-label="Affected groups"></div><div class="panel" id="panel" aria-live="polite"></div></div>
+ <p class="note">Shares are estimates and groups overlap, so they do not add up to 100%.</p>
+</div></section>
+
+<section class="pane" id="report" data-title="Report a crime" hidden><div class="wrap">
+ <h2>If it already happened, start here</h2>
+ <p class="lede">Choose what happened. You will get the steps in the order that matters.</p>
+ <div class="help">
+  <div><b>1930</b>National cyber fraud helpline. Call at once if money was taken.</div>
+  <div><b><a href="https://cybercrime.gov.in" rel="noopener">cybercrime.gov.in</a></b>National Cyber Crime Reporting Portal for filing a complaint online.</div>
+ </div>
+ <div class="chips" id="cases" role="group" aria-label="What happened"></div>
+ <div class="panel"><h3 id="ctitle"></h3><ol class="steps" id="csteps" aria-live="polite"></ol></div>
+ <p class="note">This site teaches and guides. It cannot file a complaint for you. Official reports go through the portal, the helpline, or your nearest police station.</p>
+</div></section>
+
+<section class="pane" id="quiz" data-title="Quiz" hidden><div class="wrap quiz">
+ <h2>Scam or safe?</h2>
+ <p class="lede">Read the message. Decide. Five rounds.</p>
+ <div id="qbox"></div>
+</div></section>
+
+<section class="pane" id="password" data-title="Password check" hidden><div class="wrap">
+ <h2>How strong is your password?</h2>
+ <p class="lede">Type a password to test it. It is checked inside your browser and never sent or saved anywhere.</p>
+ <input class="pw" id="pw" type="text" autocomplete="off" spellcheck="false" placeholder="Try a password you would never use" aria-label="Password to test">
+ <div class="pwbar"><i id="pwi"></i></div>
+ <p class="readout" id="pwt" style="margin-top:10px" aria-live="polite"></p>
+ <h3 style="margin-top:28px">Habits that protect you</h3>
+ <ul class="tips"><li>Use a long phrase of four or more random words. Length beats clever symbols.</li><li>Use a different password for every important account.</li><li>Turn on two-step verification for email, banking and social media.</li><li>Never share an OTP, PIN or CVV with anyone, whoever they say they are.</li></ul>
+</div></section>
+
+<section class="pane" id="share" data-title="Share your experience" hidden><div class="wrap quiz">
+ <h2>Share your experience</h2>
+ <p class="lede">Tell us about a cybercrime you faced or saw. Your answers help our project understand what people go through. This is not a police complaint. To report officially, use the Report a crime tab.</p>
+ <p class="note"><b>Never type</b> passwords, OTPs, card numbers or bank details here.</p>
+ <form id="exp" name="experience" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form">
+  <input type="hidden" name="form-name" value="experience">
+  <p hidden><label>Leave this empty <input name="bot-field"></label></p>
+  <label>Your name (optional)<input name="name" autocomplete="off"></label>
+  <label>Age group<select name="age_group" required><option value="">Choose one</option><option>Below 18</option><option>18 to 30</option><option>31 to 45</option><option>46 to 59</option><option>60 and above</option></select></label>
+  <label>City or area<input name="city" autocomplete="off"></label>
+  <label>What kind of cybercrime?<select name="crime_type" required><option value="">Choose one</option><option>UPI or payment fraud</option><option>Phishing link or fake website</option><option>Digital arrest or fake officer call</option><option>Sextortion or blackmail</option><option>Job or task fraud</option><option>Fake loan app</option><option>Harassment, stalking or morphing</option><option>Account hacked</option><option>Other</option></select></label>
+  <label>What happened?<textarea name="story" rows="5" required placeholder="Describe it in your own words. Leave out personal and bank details."></textarea></label>
+  <fieldset><legend>Did you report it?</legend>
+   <label class="inl"><input type="radio" name="reported" value="Yes" required> Yes</label>
+   <label class="inl"><input type="radio" name="reported" value="No"> No</label>
+   <label class="inl"><input type="radio" name="reported" value="Not sure"> Not sure</label></fieldset>
+  <label>Email, only if you want us to reply (optional)<input type="email" name="email" autocomplete="off"></label>
+  <label class="inl"><input type="checkbox" name="consent" required> I agree that my answers can be used in this college project.</label>
+  <button class="go" type="submit" id="send">Send</button>
+  <div id="formmsg" aria-live="polite"></div>
+ </form>
+</div></section>
+
+<section class="pane" id="admin" hidden><div class="wrap">
+ <div class="bar2"><h2>Submissions</h2><div><button class="chip" id="csv">Download CSV</button> <button class="chip" id="out">Log out</button></div></div>
+ <div class="facts" id="stats"></div>
+ <div class="box" style="margin-top:20px"><h3>By type of cybercrime</h3><div id="bytype"></div></div>
+ <div class="bar2" style="margin-top:24px"><input class="pw" id="q" placeholder="Search names, cities, stories" aria-label="Search" style="margin:0"><select class="pw" id="ft" style="margin:0" aria-label="Filter by type"><option value="">All types</option></select></div>
+ <div class="scroll"><table id="tb"><thead><tr><th>Date</th><th>Name</th><th>Age</th><th>City</th><th>Type</th><th>Reported</th><th>Story</th><th>Email</th></tr></thead><tbody></tbody></table></div>
+</div></section>
+
+<section class="pane" id="team" data-title="Our team" hidden><div class="wrap">
+ <h2>About this project</h2>
+ <p class="lede">A field project by S.Y.B.Sc. Computer Science students of Sheth L.U.J. and Sir M.V. College, Semester III, academic year 2026-27.</p>
+ <table><thead><tr><th>Roll no.</th><th>Name</th></tr></thead><tbody>
+  <tr><td>S096</td><td>Zainab Khan</td></tr><tr><td>S113</td><td>Dhani Singh</td></tr>
+  <tr><td>S128</td><td>Aafiya Shaikh</td></tr><tr><td>S129</td><td>Meghna Waghmare</td></tr>
+ </tbody></table>
+ <p class="lede">Project guide: Ms. Jyoti Chauhan</p>
+</div></section>
+</main>
+<footer><div class="wrap">CyberSafe India, an educational project. In an emergency, call 112 or your local police.</div></footer>
+
+<dialog id="lg"><form id="lf" class="form"><h2>Admin login</h2>
+ <label>Username<input id="u" autocomplete="username" required></label>
+ <label>Password<input id="p" type="password" autocomplete="current-password" required></label>
+ <div id="lmsg" aria-live="polite"></div>
+ <div style="display:flex;gap:10px"><button class="go" type="submit">Log in</button><button class="chip" type="button" id="lcancel">Cancel</button></div></form></dialog>
+<script src="script.js"></script>
+</body>
+</html>
