@@ -82,17 +82,19 @@ $('pw').addEventListener('input',e=>{const v=e.target.value;let s=0;
  const lv=s<35?['Weak. Easy to guess.','var(--alert)']:s<65?['Fair. Make it longer.','var(--mark)']:s<85?['Good.','var(--accent)']:['Strong.','var(--safe)'];
  $('pwi').style.width=s+'%';$('pwi').style.background=lv[1];$('pwt').textContent=v?lv[0]+' '+v.length+' characters.':''});
 
-/* Share your experience form (Netlify Forms) */
+/* Share your experience form (saved by our own server) */
 $('exp').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,m=$('formmsg'),b=$('send');
  b.disabled=true;m.innerHTML='';
- try{const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()});
-  if(!r.ok)throw new Error(r.status);
+ try{const body=Object.fromEntries(new FormData(f));body.consent=f.consent.checked;
+  const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const d=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(d.error||('Error '+r.status));
   f.reset();m.innerHTML='<div class="fb ok"><b>Thank you. </b>Your experience was sent. If you lost money, please also call 1930 and report at cybercrime.gov.in.</div>';
- }catch(err){m.innerHTML='<div class="fb no"><b>Not sent. </b>This form only saves answers once the site is live on Netlify. If it is already live, check your internet and try again.</div>'}
+ }catch(err){m.innerHTML='<div class="fb no"><b>Not sent. </b>'+esc(err.message)+' Please check your internet and try again.</div>'}
  b.disabled=false});
 
 /* Hidden admin: triple-click the logo, or press Shift+Alt+L */
-const API='/.netlify/functions/admin',lg=$('lg');let subs=[];
+const API='/api/admin',lg=$('lg');let subs=[];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function atok(){try{return sessionStorage.getItem('t')||''}catch(e){return window._t||''}}
 function setTok(t){try{sessionStorage.setItem('t',t)}catch(e){window._t=t}}

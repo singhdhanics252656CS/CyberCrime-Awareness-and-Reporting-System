@@ -105,9 +105,8 @@
  <h2>Share your experience</h2>
  <p class="lede">Tell us about a cybercrime you faced or saw. Your answers help our project understand what people go through. This is not a police complaint. To report officially, use the Report a crime tab.</p>
  <p class="note"><b>Never type</b> passwords, OTPs, card numbers or bank details here.</p>
- <form id="exp" name="experience" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form">
-  <input type="hidden" name="form-name" value="experience">
-  <p hidden><label>Leave this empty <input name="bot-field"></label></p>
+ <form id="exp" name="experience" class="form">
+  <p hidden aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
   <label>Your name (optional)<input name="name" autocomplete="off"></label>
   <label>Age group<select name="age_group" required><option value="">Choose one</option><option>Below 18</option><option>18 to 30</option><option>31 to 45</option><option>46 to 59</option><option>60 and above</option></select></label>
   <label>City or area<input name="city" autocomplete="off"></label>
