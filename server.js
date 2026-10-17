@@ -11,7 +11,7 @@ const DATA_FILE = path.join(DATA_DIR, 'submissions.json');
 const app = express();
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
-app.use(express.json({ limit: '50kb' }));
+app.use(express.json({ limit: '50kb', type: () => true })); // parse JSON whatever the Content-Type header says
 app.use((req, res, next) => {
   res.set({
     'X-Content-Type-Options': 'nosniff',
@@ -95,7 +95,7 @@ app.use('/api/admin', (req, res, next) => {
 
 app.post('/api/admin', limit('login', 10, 15 * 60e3), async (req, res) => {
   const b = req.body || {};
-  const good = same(b.user || '', process.env.ADMIN_USER) & same(b.pass || '', process.env.ADMIN_PASS);
+  const good = same(String(b.user || '').trim().toLowerCase(), String(process.env.ADMIN_USER).trim().toLowerCase()) & same(String(b.pass || '').trim(), String(process.env.ADMIN_PASS).trim());
   if (!good) { await new Promise(r => setTimeout(r, 1000)); return res.status(401).json({ error: 'Wrong username or password' }); }
   res.json({ token: makeToken() });
 });

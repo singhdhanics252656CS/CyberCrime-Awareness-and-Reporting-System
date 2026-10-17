@@ -104,7 +104,7 @@ document.addEventListener('keydown',e=>{if(e.shiftKey&&e.altKey&&e.code==='KeyL'
 let bt=[];document.querySelector('.brand').addEventListener('click',()=>{const n=Date.now();bt=bt.filter(t=>n-t<1500);bt.push(n);if(bt.length>=3){bt=[];openLogin()}});
 $('lcancel').onclick=()=>lg.close();
 $('lf').addEventListener('submit',async e=>{e.preventDefault();$('lmsg').innerHTML='';
- try{const r=await fetch(API,{method:'POST',body:JSON.stringify({user:$('u').value,pass:$('p').value})});const d=await r.json();
+ try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user:$('u').value.trim(),pass:$('p').value.trim()})});const d=await r.json();
   if(!r.ok)throw new Error(d.error||'Login failed');setTok(d.token);$('p').value='';lg.close();aload()}
  catch(err){$('lmsg').innerHTML='<div class="fb no">'+esc(err.message)+'</div>'}});
 $('out').onclick=()=>{setTok('');subs=[];go('home')};
